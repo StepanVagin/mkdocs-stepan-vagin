@@ -1,39 +1,44 @@
-site_name: My MkDocs Stepan Vagin
-site_description: A modern documentation website built with MkDocs
-site_author: Stepan Vagin
+site_name: SpellChecker
+site_description: Statistical and transformer-based spell checking
+repo_url: https://github.com/StepanVagin/SpellChecker
 
 theme:
   name: material
-  features:
-    - navigation.tabs
-    - navigation.sections
-    - toc.integrate
-    - search.suggest
-    - search.highlight
-    - content.tabs.link
-    - content.code.annotate
-  palette:
-    primary: indigo
-    accent: deep orange
-
-extra_css:
-  - stylesheets/extra.css
-
-plugins:
-  - search
-
-markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
-  - pymdownx.tabbed:
-      alternate_style: true
-  - attr_list
-  - tables
 
 nav:
   - Home: index.md
-  - Guide: guide.md
-  - About: about.md
+
+  - Getting Started:
+    - Quick Demo (5 min): getting-started/quick-demo.md
+    - Installation: getting-started/installation.md
+    - First Correction: getting-started/first-correction.md
+
+  - How to Use:
+    - Web Interface: how-to/web-interface.md
+    - Python API: how-to/python-api.md
+    - CLI Scripts: how-to/cli.md
+
+  - Data Pipeline:
+    - Overview: data/overview.md
+    - Supervised Datasets: data/supervised.md
+    - Unsupervised Datasets: data/unsupervised.md
+    - Adding a New Dataset: data/adding-dataset.md
+
+  - Models:
+    - N-gram Model: models/ngram.md
+    - T5 Transformer: models/t5.md
+    - Training a Custom Model: models/custom-training.md
+
+  - Architecture:
+    - System Design: architecture/design.md
+    - Project Structure: architecture/project-structure.md
+
+  - Contributing:
+    - How to Contribute: contributing/guide.md
+    - Writing a Parser: contributing/new-parser.md
+    - Code Style: contributing/code-style.md
+
+  - Reference:
+    - Python API Reference: reference/api.md
+    - Configuration Options: reference/config.md
+    - Dataset Licenses: reference/licenses.md
