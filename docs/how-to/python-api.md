@@ -296,21 +296,35 @@ print(f"False positives: {metrics.false_positives}")
 
 ## Common errors
 
-!!! warning "FileNotFoundError when loading a model"
-    The model file does not exist at the given path. Train a model first:
-    ```bash
-    python scripts/train_ngram_model.py \
-        --data "data/processed/unsupervised/*.txt" \
-        --output models/ngram
-    ```
+**`FileNotFoundError` when loading a model**
 
-!!! warning "Low correction quality on short input"
-    N-gram models use surrounding words to score candidates. Single-word input
-    only uses the 1-gram model. Pass full sentences for best results.
+The model file does not exist at the given path. Train a model first:
 
-!!! note "NLTK words corpus"
-    `load_english_dictionary` downloads the NLTK words corpus on first use if it
-    is not already present. This requires an internet connection on first run.
+```bash
+python scripts/train_ngram_model.py \
+    --data "data/processed/unsupervised/*.txt" \
+    --output models/ngram
+```
+
+---
+
+**Low correction quality on short input**
+
+N-gram models use surrounding words to score candidates. Single-word input only
+uses the 1-gram model. Pass full sentences for best results.
+
+---
+
+**NLTK words corpus not found**
+
+`load_english_dictionary` downloads the NLTK words corpus on first use if it is
+not already present. This requires an internet connection on first run. To
+download it manually:
+
+```python
+import nltk
+nltk.download("words")
+```
 
 ---
 
