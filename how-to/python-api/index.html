@@ -1903,24 +1903,24 @@ strings: reference (ground truth), predicted (checker output), and original
 </table>
 <hr />
 <h2 id="common-errors">Common errors</h2>
-<div class="admonition warning">
-<p class="admonition-title">FileNotFoundError when loading a model</p>
-<p>The model file does not exist at the given path. Train a model first:
+<p><strong><code>FileNotFoundError</code> when loading a model</strong></p>
+<p>The model file does not exist at the given path. Train a model first:</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>scripts/train_ngram_model.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--data<span class="w"> </span><span class="s2">&quot;data/processed/unsupervised/*.txt&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--output<span class="w"> </span>models/ngram
-</code></pre></div></p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Low correction quality on short input</p>
-<p>N-gram models use surrounding words to score candidates. Single-word input
-only uses the 1-gram model. Pass full sentences for best results.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">NLTK words corpus</p>
-<p><code>load_english_dictionary</code> downloads the NLTK words corpus on first use if it
-is not already present. This requires an internet connection on first run.</p>
-</div>
+</code></pre></div>
+<hr />
+<p><strong>Low correction quality on short input</strong></p>
+<p>N-gram models use surrounding words to score candidates. Single-word input only
+uses the 1-gram model. Pass full sentences for best results.</p>
+<hr />
+<p><strong>NLTK words corpus not found</strong></p>
+<p><code>load_english_dictionary</code> downloads the NLTK words corpus on first use if it is
+not already present. This requires an internet connection on first run. To
+download it manually:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;words&quot;</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="next-steps">Next steps</h2>
 <ul>
