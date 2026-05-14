@@ -1627,46 +1627,46 @@ on the n-gram model. For the T5 transformer model, see
 <li>NLTK words corpus available (downloaded automatically on first use)</li>
 </ul>
 <p>The examples below assume trained model files exist at <code>models/ngram/</code>:</p>
-<pre><code>models/ngram/
+<div class="highlight"><pre><span></span><code>models/ngram/
 ├── 1gram_model.json
 ├── 2gram_model.json
 └── 3gram_model.json
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="loading-models">Loading models</h2>
 <p><code>NGramModel</code> loads a single n-gram model from a JSON file saved during training.
 <code>SpellingChecker</code> takes a list of models and combines their vocabularies.</p>
-<pre><code class="language-python">from spellchecker.models import NGramModel, SpellingChecker
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">spellchecker.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">NGramModel</span><span class="p">,</span> <span class="n">SpellingChecker</span>
 
-model_dir = &quot;models/ngram&quot;
+<span class="n">model_dir</span> <span class="o">=</span> <span class="s2">&quot;models/ngram&quot;</span>
 
-models = []
-for n in [1, 2, 3]:
-    model = NGramModel(n=n)
-    model.load_model(f&quot;{model_dir}/{n}gram_model.json&quot;)
-    models.append(model)
+<span class="n">models</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">NGramModel</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">gram_model.json&quot;</span><span class="p">)</span>
+    <span class="n">models</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
-checker = SpellingChecker(models)
-</code></pre>
+<span class="n">checker</span> <span class="o">=</span> <span class="n">SpellingChecker</span><span class="p">(</span><span class="n">models</span><span class="p">)</span>
+</code></pre></div>
 <p>Using all three orders gives the best context-aware corrections. If you only have
 a 1-gram model (e.g. after a quick demo run), pass a single-element list — the
 checker degrades gracefully but loses context sensitivity.</p>
 <p>You can also adjust the probability threshold below which corrections are not applied:</p>
-<pre><code class="language-python">checker = SpellingChecker(models, probability_threshold=0.001)  # default
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">checker</span> <span class="o">=</span> <span class="n">SpellingChecker</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="n">probability_threshold</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>  <span class="c1"># default</span>
+</code></pre></div>
 <hr />
 <h2 id="correcting-text">Correcting text</h2>
 <p><code>correct_text</code> takes a string and returns two values: the corrected string and a
 list of <code>CorrectionResult</code> objects, one per token in the input.</p>
-<p><strong>Signature:</strong></p>
-<pre><code class="language-python">def correct_text(self, text: str) -&gt; Tuple[str, List[CorrectionResult]]
-</code></pre>
-<p><strong>Example:</strong></p>
-<pre><code class="language-python">corrected_text, results = checker.correct_text(&quot;I love this prodct&quot;)
+<p><strong>Signature:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">correct_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">CorrectionResult</span><span class="p">]]</span>
+</code></pre></div></p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><span class="n">corrected_text</span><span class="p">,</span> <span class="n">results</span> <span class="o">=</span> <span class="n">checker</span><span class="o">.</span><span class="n">correct_text</span><span class="p">(</span><span class="s2">&quot;I love this prodct&quot;</span><span class="p">)</span>
 
-print(corrected_text)
-# &quot;I love this product&quot;
-</code></pre>
+<span class="nb">print</span><span class="p">(</span><span class="n">corrected_text</span><span class="p">)</span>
+<span class="c1"># &quot;I love this product&quot;</span>
+</code></pre></div></p>
 <p><code>CorrectionResult</code> is a dataclass with the following fields:</p>
 <table>
 <thead>
@@ -1707,45 +1707,45 @@ print(corrected_text)
 <h3 id="inspecting-corrections">Inspecting corrections</h3>
 <p>To find only the tokens that were actually changed, filter for results where
 <code>corrected_word</code> differs from <code>original_word</code>:</p>
-<pre><code class="language-python">corrected_text, results = checker.correct_text(&quot;I love this prodct&quot;)
+<div class="highlight"><pre><span></span><code><span class="n">corrected_text</span><span class="p">,</span> <span class="n">results</span> <span class="o">=</span> <span class="n">checker</span><span class="o">.</span><span class="n">correct_text</span><span class="p">(</span><span class="s2">&quot;I love this prodct&quot;</span><span class="p">)</span>
 
-changes = [r for r in results if r.corrected_word != r.original_word]
+<span class="n">changes</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">corrected_word</span> <span class="o">!=</span> <span class="n">r</span><span class="o">.</span><span class="n">original_word</span><span class="p">]</span>
 
-for r in changes:
-    print(f&quot;{r.original_word!r} -&gt; {r.corrected_word!r}  &quot;
-          f&quot;(confidence={r.confidence:.2f}, edit_distance={r.edit_distance})&quot;)
-# &quot;prodct&quot; -&gt; &quot;product&quot;  (confidence=0.85, edit_distance=1)
-</code></pre>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">changes</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">original_word</span><span class="si">!r}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">corrected_word</span><span class="si">!r}</span><span class="s2">  &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;(confidence=</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">confidence</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, edit_distance=</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">edit_distance</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="c1"># &quot;prodct&quot; -&gt; &quot;product&quot;  (confidence=0.85, edit_distance=1)</span>
+</code></pre></div>
 <p>Tokens with no correction have <code>edit_distance=0</code> and <code>corrected_word == original_word</code>.</p>
 <h3 id="correcting-a-longer-passage">Correcting a longer passage</h3>
-<pre><code class="language-python">text = &quot;The quikc brown fox jumpd over the lasy dog.&quot;
+<div class="highlight"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;The quikc brown fox jumpd over the lasy dog.&quot;</span>
 
-corrected_text, results = checker.correct_text(text)
-print(corrected_text)
-# &quot;The quick brown fox jumped over the lazy dog.&quot;
+<span class="n">corrected_text</span><span class="p">,</span> <span class="n">results</span> <span class="o">=</span> <span class="n">checker</span><span class="o">.</span><span class="n">correct_text</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">corrected_text</span><span class="p">)</span>
+<span class="c1"># &quot;The quick brown fox jumped over the lazy dog.&quot;</span>
 
-changes = [r for r in results if r.corrected_word != r.original_word]
-print(f&quot;{len(changes)} correction(s) applied&quot;)
-# 3 correction(s) applied
-</code></pre>
+<span class="n">changes</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">corrected_word</span> <span class="o">!=</span> <span class="n">r</span><span class="o">.</span><span class="n">original_word</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">changes</span><span class="p">)</span><span class="si">}</span><span class="s2"> correction(s) applied&quot;</span><span class="p">)</span>
+<span class="c1"># 3 correction(s) applied</span>
+</code></pre></div>
 <hr />
 <h2 id="checking-a-single-word">Checking a single word</h2>
 <p>Use <code>check_word</code> when you need to correct one word with optional context, without
 running the full tokenization pass.</p>
-<p><strong>Signature:</strong></p>
-<pre><code class="language-python">def check_word(
-    self,
-    word: str,
-    context: List[str] = None
-) -&gt; CorrectionResult
-</code></pre>
-<p><strong>Example:</strong></p>
-<pre><code class="language-python">result = checker.check_word(&quot;prodct&quot;, context=[&quot;I&quot;, &quot;love&quot;, &quot;this&quot;])
+<p><strong>Signature:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_word</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">context</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CorrectionResult</span>
+</code></pre></div></p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">checker</span><span class="o">.</span><span class="n">check_word</span><span class="p">(</span><span class="s2">&quot;prodct&quot;</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;love&quot;</span><span class="p">,</span> <span class="s2">&quot;this&quot;</span><span class="p">])</span>
 
-print(result.corrected_word)   # &quot;product&quot;
-print(result.confidence)       # 0.85
-print(result.edit_distance)    # 1
-</code></pre>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">corrected_word</span><span class="p">)</span>   <span class="c1"># &quot;product&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">confidence</span><span class="p">)</span>       <span class="c1"># 0.85</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">edit_distance</span><span class="p">)</span>    <span class="c1"># 1</span>
+</code></pre></div></p>
 <p>If the word is found in the vocabulary it is returned unchanged with
 <code>confidence=1.0</code>. If no candidate clears the probability threshold, the original
 word is returned with <code>confidence=0.0</code>.</p>
@@ -1756,104 +1756,104 @@ n-gram training.</p>
 <h3 id="cleaning-text-with-universaltextcleaner">Cleaning text with <code>UniversalTextCleaner</code></h3>
 <p><code>UniversalTextCleaner.clean</code> returns the cleaned string or <code>None</code> if the input
 should be filtered out.</p>
-<p><strong>Signature:</strong></p>
-<pre><code class="language-python">def clean(self, text: str) -&gt; Optional[str]
-</code></pre>
-<pre><code class="language-python">from spellchecker.data.parsers import UniversalTextCleaner
+<p><strong>Signature:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">spellchecker.data.parsers</span><span class="w"> </span><span class="kn">import</span> <span class="n">UniversalTextCleaner</span>
 
-cleaner = UniversalTextCleaner(
-    min_length=20,    # filter out texts shorter than 20 characters
-    max_length=500,   # filter out texts longer than 500 characters
-    remove_urls=True,
-    remove_emails=True,
-    normalize_whitespace=True,
-)
+<span class="n">cleaner</span> <span class="o">=</span> <span class="n">UniversalTextCleaner</span><span class="p">(</span>
+    <span class="n">min_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>    <span class="c1"># filter out texts shorter than 20 characters</span>
+    <span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>   <span class="c1"># filter out texts longer than 500 characters</span>
+    <span class="n">remove_urls</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">remove_emails</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">normalize_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
 
-result = cleaner.clean(&quot;  Hello   world!  &quot;)
-print(result)
-# &quot;Hello world!&quot;
+<span class="n">result</span> <span class="o">=</span> <span class="n">cleaner</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="s2">&quot;  Hello   world!  &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="c1"># &quot;Hello world!&quot;</span>
 
-result = cleaner.clean(&quot;hi&quot;)
-print(result)
-# None  (filtered: too short)
-</code></pre>
+<span class="n">result</span> <span class="o">=</span> <span class="n">cleaner</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="c1"># None  (filtered: too short)</span>
+</code></pre></div>
 <h3 id="processing-a-wikipedia-dump">Processing a Wikipedia dump</h3>
 <p><code>WikipediaParser</code> expects WikiExtractor output (a directory of <code>wiki_*</code> files) or a
 plain-text file with one document per line. <code>save_to_file</code> returns the number of
 passages written.</p>
-<p><strong>Signature:</strong></p>
-<pre><code class="language-python">def save_to_file(
-    self,
-    input_path: Union[str, Path],
-    output_file: Union[str, Path]
-) -&gt; int
-</code></pre>
-<pre><code class="language-python">from spellchecker.data.parsers import WikipediaParser, UniversalTextCleaner
+<p><strong>Signature:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">save_to_file</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">input_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span>
+    <span class="n">output_file</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">spellchecker.data.parsers</span><span class="w"> </span><span class="kn">import</span> <span class="n">WikipediaParser</span><span class="p">,</span> <span class="n">UniversalTextCleaner</span>
 
-cleaner = UniversalTextCleaner(min_length=20, max_length=500)
-parser = WikipediaParser(cleaner)
+<span class="n">cleaner</span> <span class="o">=</span> <span class="n">UniversalTextCleaner</span><span class="p">(</span><span class="n">min_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">WikipediaParser</span><span class="p">(</span><span class="n">cleaner</span><span class="p">)</span>
 
-count = parser.save_to_file(
-    input_path=&quot;data/raw/unsupervised/wikipedia/extracted&quot;,
-    output_file=&quot;data/processed/unsupervised/wikipedia.txt&quot;,
-)
-print(f&quot;Saved {count} passages&quot;)
-</code></pre>
+<span class="n">count</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">save_to_file</span><span class="p">(</span>
+    <span class="n">input_path</span><span class="o">=</span><span class="s2">&quot;data/raw/unsupervised/wikipedia/extracted&quot;</span><span class="p">,</span>
+    <span class="n">output_file</span><span class="o">=</span><span class="s2">&quot;data/processed/unsupervised/wikipedia.txt&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> passages&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="processing-cc-news-or-bookcorpus">Processing CC-News or BookCorpus</h3>
 <p>The same <code>save_to_file</code> interface is available on <code>CCNewsParser</code> (expects a JSONL
 file) and <code>BookCorpusParser</code> (expects a directory of <code>.txt</code> files or a single file).</p>
-<pre><code class="language-python">from spellchecker.data.parsers import CCNewsParser, BookCorpusParser
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">spellchecker.data.parsers</span><span class="w"> </span><span class="kn">import</span> <span class="n">CCNewsParser</span><span class="p">,</span> <span class="n">BookCorpusParser</span>
 
-# CC-News: input is a JSONL file
-CCNewsParser().save_to_file(
-    input_file=&quot;data/raw/unsupervised/cc_news.jsonl&quot;,
-    output_file=&quot;data/processed/unsupervised/ccnews.txt&quot;,
-)
+<span class="c1"># CC-News: input is a JSONL file</span>
+<span class="n">CCNewsParser</span><span class="p">()</span><span class="o">.</span><span class="n">save_to_file</span><span class="p">(</span>
+    <span class="n">input_file</span><span class="o">=</span><span class="s2">&quot;data/raw/unsupervised/cc_news.jsonl&quot;</span><span class="p">,</span>
+    <span class="n">output_file</span><span class="o">=</span><span class="s2">&quot;data/processed/unsupervised/ccnews.txt&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
-# BookCorpus: input is a directory of .txt files
-BookCorpusParser().save_to_file(
-    input_path=&quot;data/raw/unsupervised/bookcorpus/&quot;,
-    output_file=&quot;data/processed/unsupervised/bookcorpus.txt&quot;,
-)
-</code></pre>
+<span class="c1"># BookCorpus: input is a directory of .txt files</span>
+<span class="n">BookCorpusParser</span><span class="p">()</span><span class="o">.</span><span class="n">save_to_file</span><span class="p">(</span>
+    <span class="n">input_path</span><span class="o">=</span><span class="s2">&quot;data/raw/unsupervised/bookcorpus/&quot;</span><span class="p">,</span>
+    <span class="n">output_file</span><span class="o">=</span><span class="s2">&quot;data/processed/unsupervised/bookcorpus.txt&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
 <p>Or use the convenience function to dispatch by corpus name:</p>
-<pre><code class="language-python">from spellchecker.data.parsers.unsupervised_parser import process_unsupervised_corpus
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">spellchecker.data.parsers.unsupervised_parser</span><span class="w"> </span><span class="kn">import</span> <span class="n">process_unsupervised_corpus</span>
 
-count = process_unsupervised_corpus(
-    corpus_type=&quot;wikipedia&quot;,   # &quot;wikipedia&quot; | &quot;ccnews&quot; | &quot;bookcorpus&quot;
-    input_path=&quot;data/raw/unsupervised/wikipedia/extracted&quot;,
-    output_file=&quot;data/processed/unsupervised/wikipedia.txt&quot;,
-)
-</code></pre>
+<span class="n">count</span> <span class="o">=</span> <span class="n">process_unsupervised_corpus</span><span class="p">(</span>
+    <span class="n">corpus_type</span><span class="o">=</span><span class="s2">&quot;wikipedia&quot;</span><span class="p">,</span>   <span class="c1"># &quot;wikipedia&quot; | &quot;ccnews&quot; | &quot;bookcorpus&quot;</span>
+    <span class="n">input_path</span><span class="o">=</span><span class="s2">&quot;data/raw/unsupervised/wikipedia/extracted&quot;</span><span class="p">,</span>
+    <span class="n">output_file</span><span class="o">=</span><span class="s2">&quot;data/processed/unsupervised/wikipedia.txt&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="evaluating-performance">Evaluating performance</h2>
 <p><code>Evaluator.evaluate</code> computes token-level metrics given three parallel lists of
 strings: reference (ground truth), predicted (checker output), and original
 (uncorrected input).</p>
-<p><strong>Signature:</strong></p>
-<pre><code class="language-python">@staticmethod
-def evaluate(
-    reference_texts: List[str],
-    predicted_texts: List[str],
-    original_texts: List[str]
-) -&gt; EvaluationMetrics
-</code></pre>
-<pre><code class="language-python">from spellchecker.models import Evaluator
+<p><strong>Signature:</strong>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span>
+    <span class="n">reference_texts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">predicted_texts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">original_texts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EvaluationMetrics</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">spellchecker.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Evaluator</span>
 
-originals  = [&quot;I love this prodct&quot;, &quot;He jumpd over the fense&quot;]
-references = [&quot;I love this product&quot;, &quot;He jumped over the fence&quot;]
-predicted  = [checker.correct_text(t)[0] for t in originals]
+<span class="n">originals</span>  <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;I love this prodct&quot;</span><span class="p">,</span> <span class="s2">&quot;He jumpd over the fense&quot;</span><span class="p">]</span>
+<span class="n">references</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;I love this product&quot;</span><span class="p">,</span> <span class="s2">&quot;He jumped over the fence&quot;</span><span class="p">]</span>
+<span class="n">predicted</span>  <span class="o">=</span> <span class="p">[</span><span class="n">checker</span><span class="o">.</span><span class="n">correct_text</span><span class="p">(</span><span class="n">t</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">originals</span><span class="p">]</span>
 
-metrics = Evaluator.evaluate(references, predicted, originals)
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">Evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">references</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="n">originals</span><span class="p">)</span>
 
-print(f&quot;Exact match    : {metrics.exact_match:.2f}&quot;)
-print(f&quot;Precision      : {metrics.precision:.2f}&quot;)
-print(f&quot;Recall         : {metrics.recall:.2f}&quot;)
-print(f&quot;F1             : {metrics.f1_score:.2f}&quot;)
-print(f&quot;Total errors   : {metrics.total_errors}&quot;)
-print(f&quot;Corrected      : {metrics.corrected_errors}&quot;)
-print(f&quot;False positives: {metrics.false_positives}&quot;)
-</code></pre>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exact match    : </span><span class="si">{</span><span class="n">metrics</span><span class="o">.</span><span class="n">exact_match</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precision      : </span><span class="si">{</span><span class="n">metrics</span><span class="o">.</span><span class="n">precision</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall         : </span><span class="si">{</span><span class="n">metrics</span><span class="o">.</span><span class="n">recall</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1             : </span><span class="si">{</span><span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total errors   : </span><span class="si">{</span><span class="n">metrics</span><span class="o">.</span><span class="n">total_errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Corrected      : </span><span class="si">{</span><span class="n">metrics</span><span class="o">.</span><span class="n">corrected_errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;False positives: </span><span class="si">{</span><span class="n">metrics</span><span class="o">.</span><span class="n">false_positives</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><code>EvaluationMetrics</code> fields:</p>
 <table>
 <thead>
@@ -1903,18 +1903,24 @@ print(f&quot;False positives: {metrics.false_positives}&quot;)
 </table>
 <hr />
 <h2 id="common-errors">Common errors</h2>
-<p>!!! warning "FileNotFoundError when loading a model"
-    The model file does not exist at the given path. Train a model first:
-    <code>bash
-    python scripts/train_ngram_model.py \
-        --data "data/processed/unsupervised/*.txt" \
-        --output models/ngram</code></p>
-<p>!!! warning "Low correction quality on short input"
-    N-gram models use surrounding words to score candidates. Single-word input
-    only uses the 1-gram model. Pass full sentences for best results.</p>
-<p>!!! note "NLTK words corpus"
-    <code>load_english_dictionary</code> downloads the NLTK words corpus on first use if it
-    is not already present. This requires an internet connection on first run.</p>
+<div class="admonition warning">
+<p class="admonition-title">FileNotFoundError when loading a model</p>
+<p>The model file does not exist at the given path. Train a model first:
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>scripts/train_ngram_model.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--data<span class="w"> </span><span class="s2">&quot;data/processed/unsupervised/*.txt&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>models/ngram
+</code></pre></div></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Low correction quality on short input</p>
+<p>N-gram models use surrounding words to score candidates. Single-word input
+only uses the 1-gram model. Pass full sentences for best results.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">NLTK words corpus</p>
+<p><code>load_english_dictionary</code> downloads the NLTK words corpus on first use if it
+is not already present. This requires an internet connection on first run.</p>
+</div>
 <hr />
 <h2 id="next-steps">Next steps</h2>
 <ul>
