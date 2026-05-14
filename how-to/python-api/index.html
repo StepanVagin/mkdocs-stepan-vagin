@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#python-api" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -465,6 +470,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python API
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -482,6 +507,180 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loading models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#correcting-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correcting text
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Correcting text">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inspecting-corrections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspecting corrections
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correcting-a-longer-passage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correcting a longer passage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-a-single-word" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking a single word
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-training-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preparing training data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing training data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cleaning-text-with-universaltextcleaner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cleaning text with UniversalTextCleaner
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-a-wikipedia-dump" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Processing a Wikipedia dump
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-cc-news-or-bookcorpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Processing CC-News or BookCorpus
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluating-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evaluating performance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common errors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1230,6 +1429,171 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loading models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#correcting-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correcting text
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Correcting text">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inspecting-corrections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspecting corrections
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correcting-a-longer-passage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correcting a longer passage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-a-single-word" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking a single word
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-training-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preparing training data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing training data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cleaning-text-with-universaltextcleaner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cleaning text with UniversalTextCleaner
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-a-wikipedia-dump" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Processing a Wikipedia dump
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-cc-news-or-bookcorpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Processing CC-News or BookCorpus
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluating-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evaluating performance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common errors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1249,9 +1613,315 @@
   
 
 
-  <h1>Python API</h1>
+<h1 id="python-api">Python API</h1>
+<p>This page explains how to use SpellChecker programmatically. All examples are based
+on the n-gram model. For the T5 transformer model, see
+<a href="../../models/t5/">T5 Transformer</a>.</p>
+<hr />
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before running any code on this page:</p>
+<ul>
+<li>Python 3.10 or later</li>
+<li>Dependencies installed: <code>pip install -r requirements.txt</code></li>
+<li>At least one trained model on disk (see <a href="../../models/custom-training/">Training a Custom Model</a>)</li>
+<li>NLTK words corpus available (downloaded automatically on first use)</li>
+</ul>
+<p>The examples below assume trained model files exist at <code>models/ngram/</code>:</p>
+<pre><code>models/ngram/
+├── 1gram_model.json
+├── 2gram_model.json
+└── 3gram_model.json
+</code></pre>
+<hr />
+<h2 id="loading-models">Loading models</h2>
+<p><code>NGramModel</code> loads a single n-gram model from a JSON file saved during training.
+<code>SpellingChecker</code> takes a list of models and combines their vocabularies.</p>
+<pre><code class="language-python">from spellchecker.models import NGramModel, SpellingChecker
 
+model_dir = &quot;models/ngram&quot;
 
+models = []
+for n in [1, 2, 3]:
+    model = NGramModel(n=n)
+    model.load_model(f&quot;{model_dir}/{n}gram_model.json&quot;)
+    models.append(model)
+
+checker = SpellingChecker(models)
+</code></pre>
+<p>Using all three orders gives the best context-aware corrections. If you only have
+a 1-gram model (e.g. after a quick demo run), pass a single-element list — the
+checker degrades gracefully but loses context sensitivity.</p>
+<p>You can also adjust the probability threshold below which corrections are not applied:</p>
+<pre><code class="language-python">checker = SpellingChecker(models, probability_threshold=0.001)  # default
+</code></pre>
+<hr />
+<h2 id="correcting-text">Correcting text</h2>
+<p><code>correct_text</code> takes a string and returns two values: the corrected string and a
+list of <code>CorrectionResult</code> objects, one per token in the input.</p>
+<p><strong>Signature:</strong></p>
+<pre><code class="language-python">def correct_text(self, text: str) -&gt; Tuple[str, List[CorrectionResult]]
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-python">corrected_text, results = checker.correct_text(&quot;I love this prodct&quot;)
+
+print(corrected_text)
+# &quot;I love this product&quot;
+</code></pre>
+<p><code>CorrectionResult</code> is a dataclass with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>original_word</code></td>
+<td><code>str</code></td>
+<td>The token as it appeared in the input</td>
+</tr>
+<tr>
+<td><code>corrected_word</code></td>
+<td><code>str</code></td>
+<td>The suggested replacement (same as original if no correction was made)</td>
+</tr>
+<tr>
+<td><code>probability</code></td>
+<td><code>float</code></td>
+<td>N-gram probability of the corrected word</td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td><code>float</code></td>
+<td>Confidence score in the range [0.0, 1.0]</td>
+</tr>
+<tr>
+<td><code>edit_distance</code></td>
+<td><code>int</code></td>
+<td>Levenshtein distance between original and correction (0 if unchanged)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="inspecting-corrections">Inspecting corrections</h3>
+<p>To find only the tokens that were actually changed, filter for results where
+<code>corrected_word</code> differs from <code>original_word</code>:</p>
+<pre><code class="language-python">corrected_text, results = checker.correct_text(&quot;I love this prodct&quot;)
+
+changes = [r for r in results if r.corrected_word != r.original_word]
+
+for r in changes:
+    print(f&quot;{r.original_word!r} -&gt; {r.corrected_word!r}  &quot;
+          f&quot;(confidence={r.confidence:.2f}, edit_distance={r.edit_distance})&quot;)
+# &quot;prodct&quot; -&gt; &quot;product&quot;  (confidence=0.85, edit_distance=1)
+</code></pre>
+<p>Tokens with no correction have <code>edit_distance=0</code> and <code>corrected_word == original_word</code>.</p>
+<h3 id="correcting-a-longer-passage">Correcting a longer passage</h3>
+<pre><code class="language-python">text = &quot;The quikc brown fox jumpd over the lasy dog.&quot;
+
+corrected_text, results = checker.correct_text(text)
+print(corrected_text)
+# &quot;The quick brown fox jumped over the lazy dog.&quot;
+
+changes = [r for r in results if r.corrected_word != r.original_word]
+print(f&quot;{len(changes)} correction(s) applied&quot;)
+# 3 correction(s) applied
+</code></pre>
+<hr />
+<h2 id="checking-a-single-word">Checking a single word</h2>
+<p>Use <code>check_word</code> when you need to correct one word with optional context, without
+running the full tokenization pass.</p>
+<p><strong>Signature:</strong></p>
+<pre><code class="language-python">def check_word(
+    self,
+    word: str,
+    context: List[str] = None
+) -&gt; CorrectionResult
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-python">result = checker.check_word(&quot;prodct&quot;, context=[&quot;I&quot;, &quot;love&quot;, &quot;this&quot;])
+
+print(result.corrected_word)   # &quot;product&quot;
+print(result.confidence)       # 0.85
+print(result.edit_distance)    # 1
+</code></pre>
+<p>If the word is found in the vocabulary it is returned unchanged with
+<code>confidence=1.0</code>. If no candidate clears the probability threshold, the original
+word is returned with <code>confidence=0.0</code>.</p>
+<hr />
+<h2 id="preparing-training-data">Preparing training data</h2>
+<p>The parsers in <code>spellchecker.data.parsers</code> clean and normalize raw corpora before
+n-gram training.</p>
+<h3 id="cleaning-text-with-universaltextcleaner">Cleaning text with <code>UniversalTextCleaner</code></h3>
+<p><code>UniversalTextCleaner.clean</code> returns the cleaned string or <code>None</code> if the input
+should be filtered out.</p>
+<p><strong>Signature:</strong></p>
+<pre><code class="language-python">def clean(self, text: str) -&gt; Optional[str]
+</code></pre>
+<pre><code class="language-python">from spellchecker.data.parsers import UniversalTextCleaner
+
+cleaner = UniversalTextCleaner(
+    min_length=20,    # filter out texts shorter than 20 characters
+    max_length=500,   # filter out texts longer than 500 characters
+    remove_urls=True,
+    remove_emails=True,
+    normalize_whitespace=True,
+)
+
+result = cleaner.clean(&quot;  Hello   world!  &quot;)
+print(result)
+# &quot;Hello world!&quot;
+
+result = cleaner.clean(&quot;hi&quot;)
+print(result)
+# None  (filtered: too short)
+</code></pre>
+<h3 id="processing-a-wikipedia-dump">Processing a Wikipedia dump</h3>
+<p><code>WikipediaParser</code> expects WikiExtractor output (a directory of <code>wiki_*</code> files) or a
+plain-text file with one document per line. <code>save_to_file</code> returns the number of
+passages written.</p>
+<p><strong>Signature:</strong></p>
+<pre><code class="language-python">def save_to_file(
+    self,
+    input_path: Union[str, Path],
+    output_file: Union[str, Path]
+) -&gt; int
+</code></pre>
+<pre><code class="language-python">from spellchecker.data.parsers import WikipediaParser, UniversalTextCleaner
+
+cleaner = UniversalTextCleaner(min_length=20, max_length=500)
+parser = WikipediaParser(cleaner)
+
+count = parser.save_to_file(
+    input_path=&quot;data/raw/unsupervised/wikipedia/extracted&quot;,
+    output_file=&quot;data/processed/unsupervised/wikipedia.txt&quot;,
+)
+print(f&quot;Saved {count} passages&quot;)
+</code></pre>
+<h3 id="processing-cc-news-or-bookcorpus">Processing CC-News or BookCorpus</h3>
+<p>The same <code>save_to_file</code> interface is available on <code>CCNewsParser</code> (expects a JSONL
+file) and <code>BookCorpusParser</code> (expects a directory of <code>.txt</code> files or a single file).</p>
+<pre><code class="language-python">from spellchecker.data.parsers import CCNewsParser, BookCorpusParser
+
+# CC-News: input is a JSONL file
+CCNewsParser().save_to_file(
+    input_file=&quot;data/raw/unsupervised/cc_news.jsonl&quot;,
+    output_file=&quot;data/processed/unsupervised/ccnews.txt&quot;,
+)
+
+# BookCorpus: input is a directory of .txt files
+BookCorpusParser().save_to_file(
+    input_path=&quot;data/raw/unsupervised/bookcorpus/&quot;,
+    output_file=&quot;data/processed/unsupervised/bookcorpus.txt&quot;,
+)
+</code></pre>
+<p>Or use the convenience function to dispatch by corpus name:</p>
+<pre><code class="language-python">from spellchecker.data.parsers.unsupervised_parser import process_unsupervised_corpus
+
+count = process_unsupervised_corpus(
+    corpus_type=&quot;wikipedia&quot;,   # &quot;wikipedia&quot; | &quot;ccnews&quot; | &quot;bookcorpus&quot;
+    input_path=&quot;data/raw/unsupervised/wikipedia/extracted&quot;,
+    output_file=&quot;data/processed/unsupervised/wikipedia.txt&quot;,
+)
+</code></pre>
+<hr />
+<h2 id="evaluating-performance">Evaluating performance</h2>
+<p><code>Evaluator.evaluate</code> computes token-level metrics given three parallel lists of
+strings: reference (ground truth), predicted (checker output), and original
+(uncorrected input).</p>
+<p><strong>Signature:</strong></p>
+<pre><code class="language-python">@staticmethod
+def evaluate(
+    reference_texts: List[str],
+    predicted_texts: List[str],
+    original_texts: List[str]
+) -&gt; EvaluationMetrics
+</code></pre>
+<pre><code class="language-python">from spellchecker.models import Evaluator
+
+originals  = [&quot;I love this prodct&quot;, &quot;He jumpd over the fense&quot;]
+references = [&quot;I love this product&quot;, &quot;He jumped over the fence&quot;]
+predicted  = [checker.correct_text(t)[0] for t in originals]
+
+metrics = Evaluator.evaluate(references, predicted, originals)
+
+print(f&quot;Exact match    : {metrics.exact_match:.2f}&quot;)
+print(f&quot;Precision      : {metrics.precision:.2f}&quot;)
+print(f&quot;Recall         : {metrics.recall:.2f}&quot;)
+print(f&quot;F1             : {metrics.f1_score:.2f}&quot;)
+print(f&quot;Total errors   : {metrics.total_errors}&quot;)
+print(f&quot;Corrected      : {metrics.corrected_errors}&quot;)
+print(f&quot;False positives: {metrics.false_positives}&quot;)
+</code></pre>
+<p><code>EvaluationMetrics</code> fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>exact_match</code></td>
+<td><code>float</code></td>
+<td>Fraction of texts corrected to exactly the reference</td>
+</tr>
+<tr>
+<td><code>precision</code></td>
+<td><code>float</code></td>
+<td>Fraction of made corrections that were correct</td>
+</tr>
+<tr>
+<td><code>recall</code></td>
+<td><code>float</code></td>
+<td>Fraction of actual errors that were corrected</td>
+</tr>
+<tr>
+<td><code>f1_score</code></td>
+<td><code>float</code></td>
+<td>Harmonic mean of precision and recall</td>
+</tr>
+<tr>
+<td><code>total_errors</code></td>
+<td><code>int</code></td>
+<td>Total token-level errors across all inputs</td>
+</tr>
+<tr>
+<td><code>corrected_errors</code></td>
+<td><code>int</code></td>
+<td>Errors that were successfully corrected</td>
+</tr>
+<tr>
+<td><code>false_positives</code></td>
+<td><code>int</code></td>
+<td>Corrections applied to tokens that were already correct</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="common-errors">Common errors</h2>
+<p>!!! warning "FileNotFoundError when loading a model"
+    The model file does not exist at the given path. Train a model first:
+    <code>bash
+    python scripts/train_ngram_model.py \
+        --data "data/processed/unsupervised/*.txt" \
+        --output models/ngram</code></p>
+<p>!!! warning "Low correction quality on short input"
+    N-gram models use surrounding words to score candidates. Single-word input
+    only uses the 1-gram model. Pass full sentences for best results.</p>
+<p>!!! note "NLTK words corpus"
+    <code>load_english_dictionary</code> downloads the NLTK words corpus on first use if it
+    is not already present. This requires an internet connection on first run.</p>
+<hr />
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="../cli/">CLI Scripts</a> — run corrections from the command line without writing Python</li>
+<li><a href="../../models/custom-training/">Training a Custom Model</a> — train on your own corpus</li>
+<li><a href="../../models/t5/">T5 Transformer</a> — deep learning-based correction pipeline</li>
+</ul>
 
 
 
